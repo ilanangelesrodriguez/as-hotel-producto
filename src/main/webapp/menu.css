@@ -1,0 +1,125 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+.header__button {
+    position: relative;
+    padding: 12px 40px;
+    border: 0;
+    background: rgb(148, 1, 1);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.header__button:hover {
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.562);
+    transform: scale(1.01);
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.575);
+}
+
+.header__button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 50%;
+    height: 100%;
+    transform: rotate(80deg);
+    background: #ffffff77;
+    filter: blur(10px);
+    transition: 0.6s ease-in-out;
+}
+
+.header__button:hover::after {
+    left: 100%;
+}
+
+.header__title {
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+
+.form__div-button {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+
+.form__card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.08),
+    -4px -4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.form__card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1),
+    -4px -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form__card-image-container {
+    width: 100%;
+    height: 64%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form__card-button {
+    background: #6374da;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    cursor: pointer;
+}
+
+.form__card-button:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.form__card-button:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+.form__card-image {
+    width: 5.7em;
+    object-fit: cover;
+}
+
+.form__div-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    margin-bottom: 1.5em;
+}

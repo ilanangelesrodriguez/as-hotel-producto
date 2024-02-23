@@ -36,7 +36,7 @@ public class Usuario {
         } else if (rol.getNombre().equals("recepcionista")) {
             return new ComportamientoRecepcionista(this);
         } else {
-            return new ComportamientoPorDefecto();
+            return null;
         }
     }
 

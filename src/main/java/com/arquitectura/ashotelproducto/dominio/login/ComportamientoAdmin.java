@@ -15,8 +15,7 @@ public class ComportamientoAdmin implements ComportamientoRol{
 
     @Override
     public void mostrarFormulario() {
-        JOptionPane.showMessageDialog(null, "Esta sección esta en desarrollo.", "Información para el usuario", JOptionPane.INFORMATION_MESSAGE);
-
+        System.out.println("Mostrando formulario de administrador");
 
     }
 }

@@ -36,21 +36,21 @@ public class LoginUsuario {
         return instance;
     }
 
-    public boolean autenticar(String username, String password) throws SQLException {
+    public int autenticar(String username, String password) throws SQLException {
         Usuario usuario = encontrarUsuario(username);
         if (usuario != null) {
             if (usuario.getPassword().equals(password)) {
-                // Credenciales válidas
                 System.out.println("Credenciales válidas para usuario: " + usuario.getName());
-                return true;
+                return 0; // Autenticación exitosa
             } else {
                 // Credenciales inválidas
                 System.out.println("Intento de login fallido para usuario: " + username);
+                return 2; // Contraseña incorrecta
             }
         } else {
-            System.out.println("La cuenta está bloqueada. Contacte al administrador.");
+            System.out.println("La cuenta no existe");
+            return 1; // Usuario no encontrado
         }
-        return false;
     }
 
     /**

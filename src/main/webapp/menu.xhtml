@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./menu.css" />
+</head>
+<f:view>
+    <h:form styleClass="header">
+        <h:outputText value="Bienvenido, #{sessionScope.name}" styleClass="welcome-text header__title"/>
+        <h:commandButton styleClass="header__button button" value="Cerrar Sesión" action="#{loginBean.logout}" />
+    </h:form>
+
+    <h:form styleClass="form">
+
+        <div class="form__div">
+            <h:outputLabel styleClass="form__div-title" value="Productos"/>
+
+            <div class="form__div-button">
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/agregar-producto.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Crear Producto" action="#{productoBean.crear}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/leer-producto.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Leer Producto" action="#{productoBean.leer}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/editar-producto.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Actualizar Producto" action="#{productoBean.actualizar}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/eliminar-producto.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Eliminar Producto" action="#{productoBean.eliminar}" styleClass="form__card-button"/>
+                </div>
+            </div>
+        </div>
+        <div class="form__div">
+            <h:outputLabel styleClass="form__div-title" value="Reservas de Habitación"/>
+
+            <div class="form__div-button">
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/agregar-reserva.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Crear Reserva" action="#{reservaBean.crear}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/leer-reserva.png" styleClass="form__card-image"/>
+                    </div>
+                    <h:commandButton value="Leer Reserva" action="#{reservaBean.leer}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/editar-reserva.png" styleClass="form__card-image"/>
+
+                    </div>
+                    <h:commandButton value="Actualizar Reserva" action="#{reservaBean.actualizar}" styleClass="form__card-button"/>
+                </div>
+                <div class="form__card">
+                    <div class="form__card-image-container">
+                        <h:graphicImage value="./resources/eliminar-reserva.png" styleClass="form__card-image"/>
+
+                    </div>
+                    <h:commandButton value="Eliminar Reserva" action="#{reservaBean.eliminar}" styleClass="form__card-button"/>
+                </div>
+
+            </div>
+        </div>
+    </h:form>
+</f:view>
+
+</html>

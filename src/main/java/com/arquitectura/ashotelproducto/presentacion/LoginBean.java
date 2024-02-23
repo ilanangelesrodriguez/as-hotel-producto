@@ -1,16 +1,23 @@
 package com.arquitectura.ashotelproducto.presentacion;
 
+import com.arquitectura.ashotelproducto.dominio.Validador;
+import com.arquitectura.ashotelproducto.dominio.login.LoginUsuario;
+import com.arquitectura.ashotelproducto.dominio.login.Usuario;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.context.Flash;
 import jakarta.inject.Named;
 
+import java.sql.SQLException;
 
 @Named
 @RequestScoped
 public class LoginBean {
     private String username;
     private String password;
+    private Usuario usuario;
+    private Validador validador = new Validador();
 
     public String getUsername() {
         return username;
@@ -28,17 +35,54 @@ public class LoginBean {
         this.password = password;
     }
 
-    public String login() {
-        if (username == null || username.trim().isEmpty() || password == null || password.trim().isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Por favor, complete todos los campos."));
-            return null; // Permanece en la misma página
-        }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-        if ("usuario".equals(username) && "contrasena".equals(password)) {
-            return "bienvenido"; // Nombre de la página de bienvenida
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Nombre de usuario o contraseña incorrectos."));
-            return null; // Permanece en la misma página
+    public boolean isRequired() {
+        return true;
+    }
+
+    public String getUsernameRequiredMessage() {
+        return validador.usuarioRequerido();
+    }
+
+    public String getPasswordRequiredMessage() {
+        return validador.contrasenaRequerida();
+    }
+
+    public String login() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Flash flash = context.getExternalContext().getFlash();
+
+        try {
+            LoginUsuario loginUsuario = LoginUsuario.getInstance();
+            int authResult = loginUsuario.autenticar(username, password);
+            if (authResult == 0) {
+                usuario = loginUsuario.encontrarUsuario(username);
+                String name = usuario.getName();
+                context.getExternalContext().getSessionMap().put("name", name);
+                usuario.mostrar();
+
+                return "bienvenido"; // redirige a la página de bienvenida
+            } else if (authResult == 1) {
+                flash.setKeepMessages(true);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: La cuenta no existe.", "La cuenta no existe."));
+                return "";
+            } else {
+                flash.setKeepMessages(true);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Contraseña incorrecta.", "Contraseña incorrecta."));
+                return "";
+            }
+        } catch (SQLException e) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: No se pudo autenticar al usuario.", null));
+            return "";
         }
     }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index?faces-redirect=true";
+    }
+
 }

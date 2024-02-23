@@ -4,23 +4,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      >
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <head>
     <title>Login</title>
-    <h:outputStylesheet library="css" name="styles.css" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
 </head>
 <f:view>
-    <h:outputLabel value="Arquitectura de Software"/>
-    <h:form>
 
-        <h:inputText id="usuario" value="#{loginBean.username}" required="true" />
-        <h:messages id="messages"/>
-        <br/>
-        <h:inputSecret id="contrasena" value="#{loginBean.password}" required="true" />
-        <br/>
-        <h:commandButton value="Ingresar" action="#{loginBean.login}" />
+    <h:form styleClass="form">
+        <div class="form__div">
+            <h:graphicImage value="./resources/login.svg" styleClass="form__img"/>
+        </div>
+        <div class="form__div">
+            <h:outputLabel styleClass="form-title" value="Arquitectura de Software"/>
+
+            <br/>
+            <div class="input-container">
+                <h:inputText styleClass="input" id="usuario" value="#{loginBean.username}" required="#{loginBean.required}" requiredMessage="#{loginBean.usernameRequiredMessage}"/>
+            </div>
+
+            <div class="input-container">
+                <h:inputSecret styleClass="input" id="contrasena" value="#{loginBean.password}" required="#{loginBean.required}" requiredMessage="#{loginBean.passwordRequiredMessage}"/>
+            </div>
+
+            <h:commandButton styleClass="submit" value="Ingresar" action="#{loginBean.login}" />
+        </div>
 
     </h:form>
+
+    <h:messages styleClass="messages" id="messages"/>
 </f:view>
+
 </html>
