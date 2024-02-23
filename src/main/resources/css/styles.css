@@ -1,0 +1,11 @@
+#messages {
+    position: fixed; /* o puedes usar 'absolute' dependiendo de tus necesidades */
+    top: 10px; /* ajusta según sea necesario */
+    right: 10px; /* ajusta según sea necesario */
+    z-index: 1000; /* para asegurarte de que el mensaje esté por encima de otros elementos */
+    background-color: #f8d7da; /* color de fondo para mensajes de error, ajusta según sea necesario */
+    color: #721c24; /* color del texto para mensajes de error, ajusta según sea necesario */
+    border-color: #f5c6cb; /* color del borde para mensajes de error, ajusta según sea necesario */
+    padding: 10px; /* espacio alrededor del texto, ajusta según sea necesario */
+    border-radius: 5px; /* bordes redondeados, ajusta según sea necesario */
+}

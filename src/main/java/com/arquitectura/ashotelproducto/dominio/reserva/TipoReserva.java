@@ -17,6 +17,10 @@ public class TipoReserva {
         this.descripcion = descripcion;
     }
 
+    public TipoReserva() {
+
+    }
+
     // Getters and Setters
 
     public int getIdTipoReserva() {

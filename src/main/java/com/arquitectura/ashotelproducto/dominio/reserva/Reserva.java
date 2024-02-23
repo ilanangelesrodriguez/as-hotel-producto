@@ -1,6 +1,8 @@
 package com.arquitectura.ashotelproducto.dominio.reserva;
 
-import javax.persistence.Entity;
+
+import org.hibernate.annotations.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,17 +23,21 @@ public class Reserva {
     private Date fechaFin;
     private String estado;
 
-public Reserva(int idReserva, int idHabitacion, int idCliente, int idTurno, String idTipoReserva, Timestamp fechaIngreso, int cantidadPersonas, Timestamp fechaFin, String estado) {
-    this.idReserva = idReserva;
-    this.idHabitacion = idHabitacion;
-    this.idCliente = idCliente;
-    this.idTurno = idTurno;
-    this.idTipoReserva = idTipoReserva;
-    this.fechaIngreso = fechaIngreso;
-    this.cantidadPersonas = cantidadPersonas;
-    this.fechaFin = fechaFin;
-    this.estado = estado;
-}
+    public Reserva(int idReserva, int idHabitacion, int idCliente, int idTurno, String idTipoReserva, Timestamp fechaIngreso, int cantidadPersonas, Timestamp fechaFin, String estado) {
+        this.idReserva = idReserva;
+        this.idHabitacion = idHabitacion;
+        this.idCliente = idCliente;
+        this.idTurno = idTurno;
+        this.idTipoReserva = idTipoReserva;
+        this.fechaIngreso = fechaIngreso;
+        this.cantidadPersonas = cantidadPersonas;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+    }
+
+    public Reserva() {
+
+    }
 
     // Getters and Setters
     public int getIdReserva() {

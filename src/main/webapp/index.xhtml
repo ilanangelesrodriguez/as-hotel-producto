@@ -4,22 +4,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
 <head>
     <title>Login</title>
+    <h:outputStylesheet library="css" name="styles.css" />
 </head>
 <f:view>
     <h:outputLabel value="Arquitectura de Software"/>
     <h:form>
 
-        <!--@elvariable id="loginBean" type="com.example.producto.presentacion.LoginBean"-->
-        <h:inputText id="usuario" value="Macedo" required="true" />
+        <h:inputText id="usuario" value="#{loginBean.username}" required="true" />
+        <h:messages id="messages"/>
         <br/>
-
-        <h:inputSecret id="contrasena" value="xd" required="true" />
+        <h:inputSecret id="contrasena" value="#{loginBean.password}" required="true" />
         <br/>
-
         <h:commandButton value="Ingresar" action="#{loginBean.login}" />
+
     </h:form>
 </f:view>
 </html>
