@@ -14,6 +14,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -90,6 +91,31 @@ public class ProductoBean {
         productoBL.insertarProducto(producto);
         return "success";
     }
+    public void buscar() {
+        if (producto.getIdProducto() == 0) {
+            productos = productoBL.obtenerTodosLosProductos();
+        } else {
+            Producto productoBuscado = productoBL.obtenerProductoPorId(producto.getIdProducto());
+            productos = new ArrayList<>();
+            if (productoBuscado != null) {
+                productos.add(productoBuscado);
+            }
+        }
+    }
+
+    public String cargarProducto(Producto producto) {
+        this.producto = producto;
+        return "editar-producto";
+    }
+
+    public String eliminarProducto(int idProducto) {
+        Producto productoAEliminar = productoBL.obtenerProductoPorId(idProducto);
+        if (productoAEliminar != null) {
+            productoBL.eliminarProducto(productoAEliminar);
+        }
+        return "buscar-producto";
+    }
+
     public String crear() {
         return "crearProducto";
     }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Editar Producto</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/buscar-producto.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/registrar-producto.css" />
+</head>
+<f:view>
+    <h:form styleClass="header">
+        <h:outputText value="Bienvenido, #{sessionScope.name}" styleClass="welcome-text header__title"/>
+        <h:commandButton styleClass="header__button button" value="Volver" action="menu.xhtml" />
+    </h:form>
+
+    <h:form styleClass="form">
+        <div class="form__row">
+            <div class="form__div">
+                <h:outputLabel for="idProducto" value="ID Producto:"/>
+                <h:inputText styleClass="form__div-input" id="idProducto" value="#{productoBean.producto.idProducto}" required="false"/>
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form__div">
+                <h:commandButton value="Buscar Producto" action="#{productoBean.buscar}" styleClass="form__button"/>
+            </div>
+        </div>
+
+        <h:form>
+            <h:dataTable value="#{productoBean.productos}" var="producto" styleClass="product-table">
+                <!-- Las columnas existentes -->
+                <h:column>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandButton value="Editar" action="#{productoBean.cargarProducto(producto)}" styleClass="form__button"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+        <!-- Formulario de edición -->
+        <h:form rendered="#{not empty productoBean.producto}">
+            <h:outputLabel for="idProducto" value="ID Producto:"/>
+            <h:inputText id="idProducto" value="#{productoBean.producto.idProducto}" required="true" readonly="true"/>
+
+            <h:outputLabel for="nombre" value="Nombre:"/>
+            <h:inputText id="nombre" value="#{productoBean.producto.nombre}" required="true"/>
+
+            <h:outputLabel for="idTipoProducto" value="ID Tipo Producto:"/>
+            <h:inputText id="idTipoProducto" value="#{productoBean.producto.idTipoProducto}" required="true"/>
+
+            <h:outputLabel for="precio" value="Precio:"/>
+            <h:inputText id="precio" value="#{productoBean.producto.precio}" required="true"/>
+
+            <h:outputLabel for="idTipoCambio" value="ID Tipo Cambio:"/>
+            <h:inputText id="idTipoCambio" value="#{productoBean.producto.idTipoCambio}" required="true"/>
+
+            <h:commandButton value="Guardar cambios" action="#{productoBean.editarProducto}" styleClass="form__button"/>
+        </h:form>
+
+    </h:form>
+
+</f:view>
+
+</html>

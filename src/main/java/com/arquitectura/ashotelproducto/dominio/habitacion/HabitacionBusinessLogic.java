@@ -1,7 +1,6 @@
 package com.arquitectura.ashotelproducto.dominio.habitacion;
 
 
-
 import com.arquitectura.ashotelproducto.datos.habitacion.HabitacionDAO;
 
 import java.util.List;

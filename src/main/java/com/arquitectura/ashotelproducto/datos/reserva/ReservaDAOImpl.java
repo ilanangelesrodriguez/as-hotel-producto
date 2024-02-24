@@ -18,16 +18,16 @@ public class ReservaDAOImpl implements ReservaDAO {
 
     @Override
     public void insert(Reserva reserva) {
-        String sql = "INSERT INTO reserva (id_habitacion, id_cliente, id_turno, id_tipo_reserva, fecha_ingreso, cantidad_personas, fecha_fin, id_estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reserva (id_cliente, id_habitacion, id_turno, id_tipo_reserva, fecha_ingreso, cantidad_personas, fecha_fin, id_estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = conexion.obtenerConexion();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, reserva.getIdHabitacion());
-            pstmt.setInt(2, reserva.getIdCliente());
+            pstmt.setInt(1, reserva.getIdCliente());
+            pstmt.setInt(2, reserva.getIdHabitacion());
             pstmt.setInt(3, reserva.getIdTurno());
             pstmt.setString(4, reserva.getIdTipoReserva());
-            pstmt.setTimestamp(5, new Timestamp(reserva.getFechaIngreso().getTime()));
+            pstmt.setDate(5, new java.sql.Date(reserva.getFechaIngreso().getTime()));
             pstmt.setInt(6, reserva.getCantidadPersonas());
-            pstmt.setTimestamp(7, new Timestamp(reserva.getFechaFin().getTime()));
+            pstmt.setDate(7, new java.sql.Date(reserva.getFechaFin().getTime()));
             pstmt.setString(8, reserva.getEstado());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -105,10 +105,20 @@ public class ReservaDAOImpl implements ReservaDAO {
         List<Reserva> reservas = new ArrayList<>();
         String sql = "SELECT * FROM reserva";
         try (Connection conn = conexion.obtenerConexion();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
             while (rs.next()) {
-                reservas.add(new Reserva(rs.getInt("id_reserva"), rs.getInt("id_habitacion"), rs.getInt("id_cliente"), rs.getInt("id_turno"), rs.getString("id_tipo_reserva"), rs.getTimestamp("fecha_ingreso"), rs.getInt("cantidad_personas"), rs.getTimestamp("fecha_fin"), rs.getString("estado")));
+                Reserva reserva = new Reserva();
+                reserva.setIdReserva(rs.getInt("id_reserva"));
+                reserva.setIdHabitacion(rs.getInt("id_habitacion"));
+                reserva.setIdCliente(rs.getInt("id_cliente"));
+                reserva.setIdTurno(rs.getInt("id_turno"));
+                reserva.setIdTipoReserva(rs.getString("id_tipo_reserva"));
+                reserva.setFechaIngreso(rs.getTimestamp("fecha_ingreso"));
+                reserva.setCantidadPersonas(rs.getInt("cantidad_personas"));
+                reserva.setFechaFin(rs.getTimestamp("fecha_fin"));
+                reserva.setEstado(rs.getString("id_estado"));
+                reservas.add(reserva);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -32,19 +32,19 @@
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/leer-producto.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Leer Producto" action="#{productoBean.leer}" styleClass="form__card-button"/>
+                    <h:commandButton value="Leer Producto" action="buscar-producto" styleClass="form__card-button"/>
                 </div>
                 <div class="form__card">
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/editar-producto.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Actualizar Producto" action="#{productoBean.actualizar}" styleClass="form__card-button"/>
+                    <h:commandButton value="Actualizar Producto" action="editar-producto" styleClass="form__card-button"/>
                 </div>
                 <div class="form__card">
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/eliminar-producto.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Eliminar Producto" action="#{productoBean.eliminar}" styleClass="form__card-button"/>
+                    <h:commandButton value="Eliminar Producto" action="eliminar-producto" styleClass="form__card-button"/>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/agregar-reserva.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Registrar Reserva" action="#{reservaBean.crear}" styleClass="form__card-button"/>
+                    <h:commandButton value="Registrar Reserva" action="registrar-reserva" styleClass="form__card-button"/>
                 </div>
                 <div class="form__card">
                     <div class="form__card-image-container">

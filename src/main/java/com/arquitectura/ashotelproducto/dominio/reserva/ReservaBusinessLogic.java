@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReservaBusinessLogic {
     public ReservaDAO reservaDAO;
-    ReservaBusinessLogic(ReservaDAO reservaDAO) {
+    public ReservaBusinessLogic(ReservaDAO reservaDAO) {
         this.reservaDAO = reservaDAO;
     }
     public void guardarReserva(Reserva reserva) {

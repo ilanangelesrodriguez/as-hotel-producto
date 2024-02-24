@@ -1,25 +1,21 @@
 package com.arquitectura.ashotelproducto.dominio.habitacion;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "habitacion")
 public class Habitacion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_habitacion")
     private int idHabitacion;
 
-    @Column(name = "id_tipohabitacion")
     private int idTipoHabitacion;
 
-    @Column(name = "id_estado")
     private String estado;
 
     public Habitacion(int idHabitacion, int idTipohabitacion, String estado) {
         this.idHabitacion = idHabitacion;
         this.idTipoHabitacion = idTipohabitacion;
         this.estado = estado;
+    }
+
+    public Habitacion() {
+
     }
 
     public int getIdHabitacion() {

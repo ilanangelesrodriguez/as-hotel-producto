@@ -87,7 +87,7 @@ public class HabitacionDAOImpl implements HabitacionDAO {
                 return new Habitacion(
                         rs.getInt("id_habitacion"),
                         rs.getInt("id_tipohabitacion"),
-                        rs.getString("id_estado")
+                        rs.getString("estado")
                 );
             }
 
@@ -111,7 +111,7 @@ public class HabitacionDAOImpl implements HabitacionDAO {
                 habitaciones.add(new Habitacion(
                         rs.getInt("id_habitacion"),
                         rs.getInt("id_tipohabitacion"),
-                        rs.getString("id_estado")
+                        rs.getString("estado")
                 ));
             }
 
@@ -139,7 +139,7 @@ public class HabitacionDAOImpl implements HabitacionDAO {
                 return new Habitacion(
                         rs.getInt("id_habitacion"),
                         rs.getInt("id_tipohabitacion"),
-                        rs.getString("id_estado")
+                        rs.getString("estado")
                 );
             }
 

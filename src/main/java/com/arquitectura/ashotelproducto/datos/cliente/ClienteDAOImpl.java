@@ -83,4 +83,20 @@ public class ClienteDAOImpl implements ClienteDAO {
         }
         return clientes;
     }
+
+    @Override
+    public Cliente buscarPorDni(String dni) {
+        String sql = "SELECT * FROM cliente WHERE dni = ?";
+        try (Connection conn = conexion.obtenerConexion();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, dni);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Cliente(rs.getInt("id_cliente"), rs.getString("dni"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Registrar Reserva</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/registrar-producto.css" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/registrar-reserva.css" />
+</head>
+<f:view>
+    <h:form styleClass="header">
+        <h:outputText value="Bienvenido, #{sessionScope.name}" styleClass="welcome-text header__title"/>
+        <h:commandButton styleClass="header__button button" value="Volver" action="menu.xhtml" />
+    </h:form>
+
+    <h:form styleClass="form">
+        <div class="form__row">
+            <div class="form__div">
+                <h:outputLabel for="idReserva" value="ID Reserva:"/>
+                <h:inputText styleClass="form__div-input" id="idReserva" value="#{reservaBean.reserva.idReserva}" required="true" readonly="true"/>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="idCliente" value="ID Cliente:"/>
+                <h:inputText styleClass="form__div-input" id="idCliente" value="#{reservaBean.reserva.idCliente}" required="true"/>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="fechaInicio" value="Fecha Inicio:"/>
+                <h:inputText styleClass="form__div-input" id="fechaInicio" value="#{reservaBean.reserva.fechaIngreso}" required="true"/>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="fechaFin" value="Fecha Fin:"/>
+                <h:inputText styleClass="form__div-input" id="fechaFin" value="#{reservaBean.reserva.fechaFin}" required="true"/>
+            </div>
+
+
+            <div class="form__div">
+                <h:outputLabel for="idHabitacion" value="Habitación:"/>
+                <h:selectOneMenu id="idHabitacion" styleClass="form__div-input"  value="#{reservaBean.reserva.idHabitacion}" required="true">
+                    <f:selectItems styleClass="form__div-input" value="#{reservaBean.habitaciones}" var="habitacion" itemValue="#{habitacion.idHabitacion}" itemLabel="#{habitacion.estado}" />
+                </h:selectOneMenu>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="idTurno" value="Turno:"/>
+                <h:selectOneMenu id="idTurno" styleClass="form__div-input"  value="#{reservaBean.reserva.idTurno}" required="true">
+                    <f:selectItems styleClass="form__div-input" value="#{reservaBean.turnos}" var="turno" itemValue="#{turno.idTurno}" itemLabel="#{turno.nombreTurno}" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="form__div">
+                <h:outputLabel for="idTipoReserva" value="Tipo Reserva:"/>
+                <h:selectOneMenu id="idTipoReserva" styleClass="form__div-input"  value="#{reservaBean.reserva.idTipoReserva}" required="true">
+                    <f:selectItems styleClass="form__div-input" value="#{reservaBean.tiposReserva}" var="tipoReserva" itemValue="#{tipoReserva.idTipoReserva}" itemLabel="#{tipoReserva.descripcion}" />
+                </h:selectOneMenu>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="cantidadPersonas" value="Cantidad Personas:"/>
+                <h:inputText styleClass="form__div-input" id="cantidadPersonas" value="#{reservaBean.reserva.cantidadPersonas}" required="true"/>
+            </div>
+            <div class="form__div">
+                <h:outputLabel for="estado" value="Estado:"/>
+                <h:inputText styleClass="form__div-input" id="estado" value="#{reservaBean.reserva.estado}" required="true"/>
+            </div>
+            <div class="form__row">
+                <div class="form__div">
+                    <h:outputText value="#{reservaBean.message}" styleClass="form__message"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <div class="form__div">
+                <h:commandButton value="Ingresar Reserva" action="#{reservaBean.ingresar}" styleClass="form__button"/>
+            </div>
+        </div>
+
+
+
+    </h:form>
+
+    <h:form>
+        <h:dataTable value="#{reservaBean.reservas}" var="reserva" styleClass="reserva-table">
+            <h:column>
+                <f:facet name="header">ID Reserva</f:facet>
+                #{reserva.idReserva}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ID Habitación</f:facet>
+                #{reserva.idHabitacion}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ID Cliente</f:facet>
+                #{reserva.idCliente}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ID Turno</f:facet>
+                #{reserva.idTurno}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ID Tipo Reserva</f:facet>
+                #{reserva.idTipoReserva}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Fecha Ingreso</f:facet>
+                #{reserva.fechaIngreso}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cantidad Personas</f:facet>
+                #{reserva.cantidadPersonas}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Fecha Fin</f:facet>
+                #{reserva.fechaFin}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Estado</f:facet>
+                #{reserva.estado}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+</f:view>
+</html>

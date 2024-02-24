@@ -13,6 +13,10 @@ public class Cliente {
         this.dni = dni;
     }
 
+    public Cliente() {
+
+    }
+
     public int getIdCliente() {
         return idCliente;
     }

@@ -1,18 +1,9 @@
 package com.arquitectura.ashotelproducto.dominio.reserva;
 
-
-import org.hibernate.annotations.Entity;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Entity
 public class Reserva {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReserva;
     private int idHabitacion;
     private int idCliente;

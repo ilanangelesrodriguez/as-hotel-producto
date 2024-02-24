@@ -22,6 +22,10 @@ public class Turno {
         this.horaFin = horaFin;
     }
 
+    public Turno() {
+
+    }
+
     // Getters and Setters
 
     public int getIdTurno() {

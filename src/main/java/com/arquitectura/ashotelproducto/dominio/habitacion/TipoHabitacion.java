@@ -24,6 +24,10 @@ public class TipoHabitacion {
         this.descripcion = descripcion;
     }
 
+    public TipoHabitacion() {
+
+    }
+
     public int getIdTipoHabitacion() {
         return idTipoHabitacion;
     }
