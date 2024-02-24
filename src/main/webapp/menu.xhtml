@@ -7,8 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <head>
     <title>Menu</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <link rel="stylesheet" type="text/css" href="./menu.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
 </head>
 <f:view>
     <h:form styleClass="header">
@@ -26,7 +26,7 @@
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/agregar-producto.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Crear Producto" action="#{productoBean.crear}" styleClass="form__card-button"/>
+                    <h:commandButton value="Registrar Producto" action="registrar-producto" styleClass="form__card-button"/>
                 </div>
                 <div class="form__card">
                     <div class="form__card-image-container">
@@ -56,7 +56,7 @@
                     <div class="form__card-image-container">
                         <h:graphicImage value="./resources/agregar-reserva.png" styleClass="form__card-image"/>
                     </div>
-                    <h:commandButton value="Crear Reserva" action="#{reservaBean.crear}" styleClass="form__card-button"/>
+                    <h:commandButton value="Registrar Reserva" action="#{reservaBean.crear}" styleClass="form__card-button"/>
                 </div>
                 <div class="form__card">
                     <div class="form__card-image-container">

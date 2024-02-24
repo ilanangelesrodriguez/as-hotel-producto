@@ -3,6 +3,8 @@ package com.arquitectura.ashotelproducto.dominio;
 
 import com.arquitectura.ashotelproducto.datos.otros.TipoCambioDAO;
 
+import java.util.List;
+
 public class TipoCambioBusinessLogic {
     TipoCambioDAO tipoCambioDAO;
 
@@ -28,5 +30,9 @@ public class TipoCambioBusinessLogic {
 
     public TipoCambio obtenerTipoCambioPorId(int id) {
         return tipoCambioDAO.selectById(id);
+    }
+
+    public List<TipoCambio> obtenerTodosLosTipoCambios() {
+        return tipoCambioDAO.selectAll();
     }
 }

@@ -64,7 +64,7 @@ public class LoginBean {
                 context.getExternalContext().getSessionMap().put("name", name);
                 usuario.mostrar();
 
-                return "bienvenido"; // redirige a la página de bienvenida
+                return "bienvenido";
             } else if (authResult == 1) {
                 flash.setKeepMessages(true);
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: La cuenta no existe.", "La cuenta no existe."));
