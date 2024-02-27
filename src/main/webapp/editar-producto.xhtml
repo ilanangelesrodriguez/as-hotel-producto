@@ -36,6 +36,10 @@
                     <f:facet name="header">Editar</f:facet>
                     <h:commandButton value="Editar" action="#{productoBean.cargarProducto(producto)}" styleClass="form__button"/>
                 </h:column>
+                <h:column>
+                    <f:facet name="header">Nombre del Producto</f:facet>
+                    <h:outputText value="#{producto.nombre}" />
+                </h:column>
             </h:dataTable>
         </h:form>
 

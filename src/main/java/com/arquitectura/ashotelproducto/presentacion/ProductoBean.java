@@ -89,7 +89,7 @@ public class ProductoBean {
 
     public String ingresar() {
         productoBL.insertarProducto(producto);
-        return "success";
+        return "menu.xhtml";
     }
     public void buscar() {
         if (producto.getIdProducto() == 0) {
@@ -108,12 +108,16 @@ public class ProductoBean {
         return "editar-producto";
     }
 
-    public String eliminarProducto(int idProducto) {
-        Producto productoAEliminar = productoBL.obtenerProductoPorId(idProducto);
-        if (productoAEliminar != null) {
-            productoBL.eliminarProducto(productoAEliminar);
+    public String eliminarProducto(Producto producto) {
+        if (producto != null) {
+            productoBL.eliminarProducto(producto);
         }
         return "buscar-producto";
+    }
+
+    public String editarProducto() {
+        productoBL.actualizarProducto(producto);
+        return "menu.xhtml";
     }
 
     public String crear() {
